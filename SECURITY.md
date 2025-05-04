@@ -1,3 +1,8 @@
+<!-- 
+SPDX-FileCopyrightText: 2025 Sidings Media
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Security Policy
 
 ## Supported Versions

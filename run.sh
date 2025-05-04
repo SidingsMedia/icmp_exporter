@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# SPDX-FileCopyrightText: 2025 Sidings Media
+# SPDX-License-Identifier: MIT
+
 # A little helper script for debugging to automatically set the
 # capability for running raw ICMP sockets
 
