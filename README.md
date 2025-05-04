@@ -14,12 +14,6 @@ The `icmp_exporter` listens on HTTP port 10035 by default. See the
 --help output for more options. You must provide a configuration file
 using the `--collector.config.file` option to start the exporter.
 
-### Configuration
-
-Configuration of ping targets is done using a simple `yaml` file. No
-configuration option is required (although the exporter won't be very
-useful if you don't declare any targets).
-
 To allow the exporter to create raw ICMP sockets, you must set the
 required capability on the exporter binary as below. Alternatively, you
 may run the exporter as root (NOT RECOMMENDED).
@@ -27,6 +21,19 @@ may run the exporter as root (NOT RECOMMENDED).
 ```bash
 setcap cap_net_raw=+ep /path/to/icmp_exporter
 ```
+
+You may then run the exporter using the command below.
+
+```bash
+./icmp_exporter --collector.config.file=/path/to/config/file.yml
+```
+
+### Configuration
+
+Configuration of ping targets is done using a simple `yaml` file. No
+configuration option is required (although the exporter won't be very
+useful if you don't declare any targets).
+
 
 ##### General Configuration Options:
 | Option | Description | Required | Default |
