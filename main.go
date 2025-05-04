@@ -23,7 +23,7 @@ import (
 
 var (
 	telemetryPath = kingpin.Flag("web.telemetry-path", "Path under which to expose metrics.").Default("/metrics").String()
-	webFlagConfig = kingpinflag.AddFlags(kingpin.CommandLine, ":9342")
+	webFlagConfig = kingpinflag.AddFlags(kingpin.CommandLine, ":10035")
     configFile = kingpin.Flag("collector.config.file", "Path to exporter configuration.").Required().String()
 )
 
