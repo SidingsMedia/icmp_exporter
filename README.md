@@ -1,11 +1,12 @@
 <!-- 
-SPDX-FileCopyrightText: 2022 Sidings Media <contact@sidingsmedia.com>
+SPDX-FileCopyrightText: 2022-2025 Sidings Media <contact@sidingsmedia.com>
 SPDX-License-Identifier: MIT
 -->
 
-# Project name
+# ICMP Exporter
 
-A description of what this project is and what it does
+A prometheus ICMP exporter specifically designed to be able to measure
+the latency across point to point links. 
 
 ## Licence
 This repo uses the [REUSE](https://reuse.software) standard in order to
@@ -15,6 +16,6 @@ places. The licence will either be in a comment block at the top of the
 file, in a `.license` file with the same name as the file, or in the
 dep5 file located in the `.reuse` directory. If you are unsure of the
 licencing terms please contact
-[contact@sidingsmedia.com](mailto:contact@sidingsmedia.com?subject=SMRC%20Licence).
+[contact@sidingsmedia.com](mailto:contact@sidingsmedia.com?subject=ICMP%20Exporter%20Licence).
 All files committed to this repo must contain valid licencing
 information or the pull request can not be accepted.

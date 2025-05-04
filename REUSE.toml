@@ -1,0 +1,4 @@
+version = 1
+SPDX-PackageName = "icmp-exporter"
+SPDX-PackageSupplier = "Sidings Media <contact@sidingsmedia.com>"
+annotations = []
