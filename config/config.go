@@ -4,6 +4,7 @@
 package config
 
 import (
+	"errors"
 	"fmt"
 	"log/slog"
 	"os"
@@ -49,7 +50,7 @@ func ParseConfig(file string, logger *slog.Logger) (*Config, error) {
 	}
 
 	setDefaults(&config)
-	if err := validateSize(&config); err != nil {
+	if err := validate(&config); err != nil {
 		return nil, err
 	}
 
@@ -103,8 +104,8 @@ func setDefaults(config *Config) {
 	}
 }
 
-// Ensure that the packet size is not invalid
-func validateSize(config *Config) error {
+// Ensure that the configuration is valid
+func validate(config *Config) error {
 	if config.DefaultSize < minSize {
 		return fmt.Errorf("default packet size %d is less than minimum %d", config.DefaultSize, minSize)
 	}
@@ -113,6 +114,10 @@ func validateSize(config *Config) error {
 		if target.Size < minSize {
 			return fmt.Errorf("packet size %d for target %s is less than minimum %d", target.Size, target.Host, minSize)
 		}
+
+        if target.Host == "" {
+            return errors.New("missing required option Host from target configuration")
+        }
 	}
 	return nil
 }
