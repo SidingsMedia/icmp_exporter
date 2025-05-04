@@ -85,6 +85,11 @@ func (c *Collector) ping(target *config.Target) (*probing.Statistics, error) {
 	pinger.Size = target.Size
 	pinger.TTL = target.TTL
 	pinger.Timeout = time.Duration(c.config.Timeout * int(time.Millisecond))
+
+    if (target.Interface != "") {
+        pinger.InterfaceName = target.Interface
+    }
+
 	pinger.SetPrivileged(true)
 
 	c.logger.Debug("Starting ping", "pinger", pinger)
