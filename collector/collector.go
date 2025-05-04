@@ -59,7 +59,7 @@ func (c *Collector) Collect(ch chan<- prometheus.Metric) {
 
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_avg_rtt"], prometheus.GaugeValue, stats.AvgRtt.Seconds(), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_min_rtt"], prometheus.GaugeValue, stats.MinRtt.Seconds(), labels...)
-          ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_max_rtt"], prometheus.GaugeValue, stats.MinRtt.Seconds(), labels...)
+          ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_max_rtt"], prometheus.GaugeValue, stats.MaxRtt.Seconds(), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_std_dev_rtt"], prometheus.GaugeValue, stats.StdDevRtt.Seconds(), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packets_sent"], prometheus.GaugeValue, float64(stats.PacketsSent), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packets_recv"], prometheus.GaugeValue, float64(stats.PacketsRecv), labels...)
