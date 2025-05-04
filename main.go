@@ -4,9 +4,11 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
+	"github.com/SidingsMedia/icmp_exporter/collector"
 	"github.com/SidingsMedia/icmp_exporter/config"
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/prometheus/client_golang/prometheus"
@@ -38,13 +40,20 @@ func main() {
     logger.Info("Starting icmp_exporter", "version", version.Info())
 	logger.Info("Build context", "build_context", version.BuildContext())
 
-    _, err := config.ParseConfig(*configFile, logger)
+    collectorConf, err := config.ParseConfig(*configFile, logger)
     if err != nil {
         logger.Error(err.Error())
         os.Exit(1)
     }
 
 	prometheus.MustRegister(versioncollector.NewCollector("icmp_exporter"))
+
+    nc, err := collector.NewCollector(logger, collectorConf)
+	if err != nil {
+		panic(fmt.Errorf("could not create collector: %w", err))
+	}
+
+	prometheus.MustRegister(nc)
 
     http.Handle(*telemetryPath, promhttp.Handler())
 	if *telemetryPath != "/" && *telemetryPath != "" {
