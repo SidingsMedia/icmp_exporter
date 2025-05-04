@@ -79,6 +79,10 @@ func setDefaults(config *Config) {
 		config.Timeout = 5000 // 5 Seconds
 	}
 
+    if config.DefaultTTL == 0 {
+        config.DefaultTTL = 64
+    }
+
 	for i := range config.Targets {
 		target := &config.Targets[i]
 		if target.Count == 0 {
