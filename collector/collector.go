@@ -30,7 +30,7 @@ func NewCollector(logger *slog.Logger, config *config.Config) (*Collector, error
 		"icmp_std_dev_rtt":  prometheus.NewDesc("icmp_std_dev_rtt", "Standard deviation of round trip time to the target.", labels, nil),
 		"icmp_packets_sent": prometheus.NewDesc("icmp_packets_sent", "Number of packets sent in this run.", labels, nil),
 		"icmp_packets_recv": prometheus.NewDesc("icmp_packets_recv", "Number of packets received in this run.", labels, nil),
-		"icmp_packet_lost": prometheus.NewDesc("icmp_packet_lost", "Percentage of packets lost in this run.", labels, nil),
+		"icmp_packet_loss": prometheus.NewDesc("icmp_packet_loss", "Percentage of packets lost in this run.", labels, nil),
 	}
 
 	return &Collector{
@@ -63,7 +63,7 @@ func (c *Collector) Collect(ch chan<- prometheus.Metric) {
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_std_dev_rtt"], prometheus.GaugeValue, stats.StdDevRtt.Seconds(), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packets_sent"], prometheus.GaugeValue, float64(stats.PacketsSent), labels...)
           ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packets_recv"], prometheus.GaugeValue, float64(stats.PacketsRecv), labels...)
-          ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packet_lost"], prometheus.GaugeValue, float64(stats.PacketLoss), labels...)
+          ch <- prometheus.MustNewConstMetric(c.descriptions["icmp_packet_loss"], prometheus.GaugeValue, float64(stats.PacketLoss), labels...)
         }()
     }
 
