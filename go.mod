@@ -36,7 +36,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/prometheus-community/pro-bing v0.7.0
 	github.com/prometheus/client_golang v1.22.0
-	github.com/prometheus/common v0.64.0
+	github.com/prometheus/common v0.65.0
 	github.com/prometheus/exporter-toolkit v0.14.0
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
 )
